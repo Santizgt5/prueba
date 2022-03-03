@@ -1,35 +1,46 @@
-async function insert(id, data) {
-    await db.query(sql`
-      INSERT INTO History (id, date, quantity, title, totalPrice)
-        VALUES (${id}, ${data.date}, ${data.quantity}, ${data.title}, ${data.totalPrice})
-      ON CONFLICT (id) DO UPDATE
-        SET value=excluded.value;
-    `);
-  }
-  async function get(id) {
-    const results = await db.query(sql`
-      SELECT value FROM History WHERE id=${id};
-    `);
-    if (results.length) {
-      return results[0].value;
-    } else {
-      return undefined;
-    }
+const db = require('./database');
+
+exports.insert = (data, callback) => {
+  db.get(`INSERT INTO History (date, quantity, title, totalPrice)
+          VALUES (?, ?, ?, ?);`, [data.date, data.quantity, data.title, data.totalPrice], (err, rows) => {
+            console.log(rows);
+              if(!err) {
+                callback({error:false, data: rows});
+              } else {
+                callback({error: true, data:err});
+              }
+          });
+}
+
+  exports.get = (id, callback) => {
+    db.get(`SELECT * FROM History WHERE id=${id};`, [], (err, rows) => {
+      console.log(rows)
+      if(!err) {
+        callback({error:false, data: rows});
+      } else {
+        callback({error: true, data:err});
+      }
+    });
   }
   
-  async function remove(id) {
-    await db.query(sql`
-      DELETE FROM History WHERE id=${id};
-    `);
+  exports.delete = (id, callback) => {
+    db.get(`DELETE FROM History WHERE id=${id};`, [], (err, rows) => {
+      if(!err) {
+        callback({error:false});
+      } else {
+        callback({error: true});
+      }
+    })
   }
 
-  async function getAll() {
-    const results = await db.query(sql`
-    SELECT * FROM History;
-  `);
-    if (results.length) {
-        return results
+  exports.getAll = (callback) => {
+    db.all(`
+      SELECT * FROM History;
+  `, [], (err, rows) => {
+    if(!err) {
+      callback({error: false, data: rows});
     } else {
-      return undefined;
+      callback({error: true, data: err});
     }
+  });
   }

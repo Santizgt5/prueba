@@ -1,3 +1,5 @@
+const db = require("./database");
+
 async function insert(id, data) {
     await db.query(sql`
       INSERT INTO Videogame (id, title, stock, companyId, releaseDate, platform, price)
@@ -7,30 +9,36 @@ async function insert(id, data) {
     `);
   }
   
-  async function get(id) {
-    const results = await db.query(sql`
-      SELECT value FROM Videogame WHERE id=${id};
-    `);
-    if (results.length) {
-      return results[0].value;
-    } else {
-      return undefined;
-    }
+  exports.get = (id, callback) => {
+    db.get(`SELECT * FROM Videogame WHERE id=${id};`, [], (err, rows) => {
+      console.log(rows)
+      if(!err) {
+        callback({error:false, data: rows});
+      } else {
+        callback({error: true, data:err});
+      }
+    });
   }
   
-  async function remove(id) {
-    await db.query(sql`
-      DELETE FROM Videogame WHERE id=${id};
-    `);
+  exports.delete = (callback) => {
+    db.all(`DELETE FROM Videogame WHERE id=${id};`, [], (err, rows) => {
+      console.log(rows)
+      if(!err) {
+        callback({error:false, data: rows});
+      } else {
+        callback({error: true, data:err});
+      }
+    })
   }
 
-  async function getAll() {
-    const results = await db.query(sql`
-    SELECT * FROM Videogame;
-  `);
-    if (results.length) {
-        return results
+  exports.getAll = (callback) => {
+    db.all(`
+      SELECT * FROM Videogame;
+  `, [], (err, rows) => {
+    if(!err) {
+      callback({error: false, data: rows});
     } else {
-      return undefined;
+      callback({error: true, data: err});
     }
+  });
   }

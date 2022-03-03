@@ -10,7 +10,7 @@ const routerFiles = fs.readdirSync(path.join(__dirname, 'routes'));
 routerFiles.forEach((file) => {
     const router = require(`./routes/${file}`);
     routes.push({
-        api:`/api/${file.replace('Router.js', '').toLowerCase()}`, 
+        api:`/api/${file.replace('.js', '').toLowerCase()}`, 
         router
     })
 })
