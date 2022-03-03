@@ -14,8 +14,12 @@ import { PopupJuegoComponent } from './components/popup-juego/popup-juego.compon
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { HistoryComponent } from './components/history/history.component';
+import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
+import { PopupCompanyComponent } from './popup-company/popup-company.component';
+import { DetalleJuegoComponent } from './detalle-juego/detalle-juego.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { HistoryComponent } from './components/history/history.component';
     NavBarComponent,
     InventoryComponent,
     PopupJuegoComponent,
-    HistoryComponent
+    HistoryComponent,
+    PopupCompanyComponent,
+    DetalleJuegoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,9 @@ import { HistoryComponent } from './components/history/history.component';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

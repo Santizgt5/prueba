@@ -1,0 +1,37 @@
+<div class="text-dark bg-light rounded">
+
+    <h1 class="font-weight-bold">Detalle Juego</h1>
+</div>
+
+<mat-dialog-content>
+    <div class="list" >
+        <div class="container">
+            <label for="Titulo" class="title" >Titulo:</label>
+            <label for="">{{data.title}}</label>
+        </div>
+        <div class="container">
+            <label for="Stock" class="title">Stock:</label>
+            <label for="">{{data.stock}}</label>
+        </div>
+        <div class="container">
+            <label for="company" class="title">Desarrolladora:</label>
+            <label for="">{{ getCompanyName() }}</label>
+        </div>
+        <div class="container">
+            <label for="releaseDate" class="title">Fecha de lanzamiento:</label>
+            <label for="">{{ getFormatDate() }}</label>
+        </div>
+        <div class="container">
+            <label for="plataforma" class="title">Plataforma:</label>
+            <label for="">{{data.platform}}</label>
+        </div>
+        <div class="container">
+            <label for="precio" class="title">Precio:</label>
+            <label for="">{{data.price}}</label>
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button type="button" class="btn btn-light" (click)="closeDialog()" >Close</button>
+</mat-dialog-actions>

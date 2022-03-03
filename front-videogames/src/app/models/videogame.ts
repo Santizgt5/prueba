@@ -3,8 +3,8 @@ export interface Videogame {
     id:             number;
     title:          string;
     stock:          number;
-    companyId:      string;
-    releaseDate:    string;
+    companyId:      number;
+    releaseDate:    Date;
     platform:       string;
     price:          number;
 }
