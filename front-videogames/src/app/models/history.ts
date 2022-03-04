@@ -1,7 +1,7 @@
 
 export interface History {
-    id:             number;
-    date:           string;
+    id?:             number;
+    date:           Date;
     quantity:       number;
     title:          string;
     totalPrice:     number;

@@ -32,3 +32,16 @@ button {
 .demo-row-is-clicked {
   font-weight: bold;
 }
+
+.filtros {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.range {
+  display: flex;
+  align-items: center;
+}
+
+

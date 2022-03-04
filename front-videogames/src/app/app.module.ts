@@ -17,7 +17,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { HistoryComponent } from './components/history/history.component';
 import { HttpClientModule } from '@angular/common/http'
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopupCompanyComponent } from './popup-company/popup-company.component';
 import { DetalleJuegoComponent } from './detalle-juego/detalle-juego.component';
 
@@ -44,7 +44,8 @@ import { DetalleJuegoComponent } from './detalle-juego/detalle-juego.component';
     MatNativeDateModule,
     MatSelectModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

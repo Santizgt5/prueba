@@ -3,7 +3,6 @@ const db = require('./database');
 exports.insert = (data, callback) => {
   db.get(`INSERT INTO History (date, quantity, title, totalPrice)
           VALUES (?, ?, ?, ?);`, [data.date, data.quantity, data.title, data.totalPrice], (err, rows) => {
-            console.log(rows);
               if(!err) {
                 callback({error:false, data: rows});
               } else {
@@ -14,7 +13,6 @@ exports.insert = (data, callback) => {
 
   exports.get = (id, callback) => {
     db.get(`SELECT * FROM History WHERE id=${id};`, [], (err, rows) => {
-      console.log(rows)
       if(!err) {
         callback({error:false, data: rows});
       } else {

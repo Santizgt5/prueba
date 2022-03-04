@@ -29,6 +29,17 @@
             <label for="precio" class="title">Precio:</label>
             <label for="">{{data.price}}</label>
         </div>
+
+        <div class="container">
+            <mat-label for="name">Seleccione cantidad a comprar: </mat-label>
+            <div>
+                <button class="btn btn-primary" (click)="addOrSubtract(false)" >-</button>
+                <input type="number" placeholder="Cantidad" class="sell-input" disabled [(ngModel)]="cantidad" >
+                <button class="btn btn-primary" (click)="addOrSubtract(true)" >+</button>
+            </div>
+            <button class="btn btn-dark" (click)="crearHistoria()" >Comprar</button>
+        </div>            
+    
     </div>
 </mat-dialog-content>
 

@@ -3,7 +3,6 @@ const db = require("./database");
 exports.insert = (data, callback) => {
   db.get(`INSERT INTO Videogame (title, stock, companyId, releaseDate, platform, price)
           VALUES (?, ?, ?, ?, ?, ?);`, [data.title, data.stock, data.companyId, data.releaseDate, data.platform, data.price], (err, rows) => {
-            console.log(rows);
               if(!err) {
                 callback({error:false, data: rows});
               } else {
@@ -14,7 +13,6 @@ exports.insert = (data, callback) => {
 
   exports.get = (id, callback) => {
     db.get(`SELECT * FROM Videogame WHERE id=${id};`, [], (err, rows) => {
-      console.log(rows)
       if(!err) {
         callback({error:false, data: rows});
       } else {
@@ -25,7 +23,6 @@ exports.insert = (data, callback) => {
   
   exports.delete = (callback) => {
     db.all(`DELETE FROM Videogame WHERE id=${id};`, [], (err, rows) => {
-      console.log(rows)
       if(!err) {
         callback({error:false, data: rows});
       } else {

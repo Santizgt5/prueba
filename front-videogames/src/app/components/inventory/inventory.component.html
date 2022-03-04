@@ -2,8 +2,40 @@
 
     <h2>Inventario de Videojuegos</h2>
 
+    <h3>Filtrar por: </h3>
+    <div class="filtros">
+      <mat-form-field appearance="fill" class="select">
+        <mat-label>Compañía</mat-label>
+        <mat-select [(ngModel)]="filter.companyId.value" (ngModelChange)="enableFilter('companyId')" >
+          <mat-option *ngFor="let developer of companies" [value]="developer.id">
+            {{ developer.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label for="name">Plataforma</mat-label>
+        <input matInput [(ngModel)]="filter.platform.value" (ngModelChange)="enableFilter('platform')" type="text">
+      </mat-form-field>
+
+      <label for="precio-label">Precio:</label>
+      <div class="range" >
+        <mat-form-field appearance="fill" class="m-2">
+          <mat-label for="name">Mínimo</mat-label>
+          <input matInput type="text" [(ngModel)]="filter.price.min">
+        </mat-form-field>
+        <p>-</p>
+        <mat-form-field appearance="fill" class="m-2">
+          <mat-label for="name">Máximo</mat-label>
+          <input matInput type="text" [(ngModel)]="filter.price.max" (ngModelChange)="enableFilter('price')" >
+        </mat-form-field>
+      </div>
+      
+    </div>
+
+
     <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
+        <table mat-table [dataSource]="videogames">
       
           <!-- Position Column -->
           <ng-container matColumnDef="id">
