@@ -18,7 +18,6 @@ exports.createCompany = async (req, res) => {
 
 exports.getCompanies = async (req, res) => {
     companyDB.getAll((companies) => {
-        console.log(companies);
         if (companies.error) {
             res.status(400).json({
                 'status': 'error',

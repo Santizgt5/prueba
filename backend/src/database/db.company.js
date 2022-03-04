@@ -4,7 +4,6 @@ const db = require("./database");
 exports.insert = (data, callback) => {
   db.get(`INSERT INTO Company (name, description, born, nit)
           VALUES (?, ?, ?, ?);`, [data.name, data.description, data.born, data.nit], (err, rows) => {
-            console.log(rows);
               if(!err) {
                 callback({error:false, data: rows});
               } else {
@@ -15,7 +14,6 @@ exports.insert = (data, callback) => {
 
   exports.get = (id, callback) => {
     db.get(`SELECT * FROM Company WHERE id=${id};`, [], (err, rows) => {
-      console.log(rows)
       if(!err) {
         callback({error:false, data: rows});
       } else {
@@ -26,7 +24,6 @@ exports.insert = (data, callback) => {
   
   exports.delete = (callback) => {
     db.all(`DELETE FROM Company WHERE id=${id};`, [], (err, rows) => {
-      console.log(rows)
       if(!err) {
         callback({error:false, data: rows});
       } else {
